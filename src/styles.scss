@@ -1,1 +1,37 @@
 /* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+h1 { text-align: center; }
+
+%flex-row {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.manga-list {
+  @extend %flex-row;
+
+  mat-card {
+    cursor: pointer;
+    &:hover {
+      background-color: #eee;
+      box-shadow: 0 0 10px #ccc;
+    }
+    margin: 5px;
+    width: 150px;
+    max-width: 300px;
+    flex-grow: 1;
+  }
+}
+
+form.filter {
+  @extend %flex-row;
+  justify-content: center;
+}
+
+mat-paginator {
+  position: absolute;
+  right: 0;
+ }

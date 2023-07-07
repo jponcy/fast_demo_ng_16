@@ -1,0 +1,26 @@
+<ng-template #noData>
+  <p class="warn">No data</p>
+</ng-template>
+
+<app-filter></app-filter>
+
+<div class="manga-list" *ngIf="entities()?.data.length; else noData">
+  <mat-card *ngFor="let e of entities().data" [routerLink]="['..', e.id]">
+    <mat-card-header>
+      <mat-card-title>{{ e.title }}</mat-card-title>
+    </mat-card-header>
+
+    <img [src]="e.images.imageUrl" alt="">
+
+    <mat-card-content>
+      <p>{{ e.synopsis|sliceWords:50 }}</p>
+    </mat-card-content>
+  </mat-card>
+</div>
+
+<mat-paginator [length]="entities()?.total"
+               [pageSize]="pageSize()"
+               [pageSizeOptions]="pageSizeOptions()"
+               (page)="onPaginateChange($event)"
+               aria-label="Select page">
+</mat-paginator>
